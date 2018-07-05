@@ -2,24 +2,24 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {RegistrationService} from './registration.service';
-import {RegistrationComponent} from './registration.component';
+import {ChatService} from './chat.service';
+import {ChatComponent} from './chat.component';
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
     RouterModule.forChild([
-      {path: 'registration', component: RegistrationComponent}
+      {path: 'chat', component: ChatComponent}
     ])
   ],
   exports: [],
   declarations: [
-    RegistrationComponent
+    ChatComponent
   ],
   providers: [
-    RegistrationService
+    ChatService
   ],
 })
-export class RegistrationModule {
+export class ChatModule {
 }

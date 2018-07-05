@@ -1,10 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Response} from '@angular/http';
-// import {Observable} from 'rxjs/Observable';
 import {environment} from '../../environments/environment';
-import {Observable} from "rxjs/internal/Observable";
-import {Link} from "../dto/link";
-import {HttpClient, HttpRequest} from "@angular/common/http";
+import {Link} from '../dto/link';
+import {HttpClient, HttpRequest} from '@angular/common/http';
 
 @Injectable()
 export class ChatbotService {

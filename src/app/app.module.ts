@@ -8,6 +8,7 @@ import {RegistrationService} from "./page/registration/registration.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ChatbotService} from "./services/chatbot.service";
 import {RegistrationModule} from "./page/registration/registration.module";
+import {ChatModule} from './page/chat/chat.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {RegistrationModule} from "./page/registration/registration.module";
     BrowserModule,
     HomeModule,
     RegistrationModule,
+    ChatModule,
     RouterModule.forRoot([
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}

@@ -1,0 +1,13 @@
+<div class="chat-page">
+
+  <div class="container" *ngFor="let message of messages">
+    <p>{{message}}</p>
+  </div>
+
+  <div class="form">
+    <form ngNativeValidate class="login-form" method="post" name="form">
+      <input type="text" placeholder="write text" #inputText/>
+      <input type="submit" value="Registration" name="registration" (click)="addMessage(inputText.value)" style="display:none;"/>
+    </form>
+  </div>
+</div>

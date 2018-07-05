@@ -1,29 +1,26 @@
 import {Component, OnInit} from '@angular/core';
-import {RegistrationService} from "./registration.service";
-import {Router} from "@angular/router";
-import {UserDTO} from "../../dto/UserDTO";
+import {RegistrationService} from './registration.service';
+import {Router} from '@angular/router';
+import {UserDTO} from '../../dto/UserDTO';
 
 @Component({
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  username: string;
+  login: string;
   password: string;
   firstName: string;
   lastName: string;
-  errorMessage: string;
 
-  constructor(private registrationService: RegistrationService, private router: Router) {
+  constructor(private registrationService: RegistrationService) {
   }
 
   ngOnInit() {
   }
 
-  register(){
-    console.log("Register")
+  registration(): void {
     this.registrationService.registerUser(
-      new UserDTO(this.username, this.password, this.firstName, this.lastName))
-      .subscribe(() => this.router.navigate(['/']));
+      new UserDTO(this.login, this.password, this.firstName, this.lastName)).subscribe(res => {});
   }
 }

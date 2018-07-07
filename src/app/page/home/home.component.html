@@ -3,7 +3,7 @@
     <form ngNativeValidate class="login-form" method="post">
       <input type="text" placeholder="login" name="login" required/>
       <input type="password" placeholder="password" name="password" required/>
-      <input type="submit" value="Log In" name="getit"/>
+      <input type="submit" value="Log In" name="getit" [routerLink]="['/chat']"/>
     </form>
     <form class="login-form" method="post">
       <input type="submit" value="Registration" name="register" [routerLink]="['/registration']"/>

@@ -1,10 +1,25 @@
+input[type="submit"] {
+  display: none;
+}
+
+.text-field {
+  border: 2px solid #dedede;
+  border-radius: 5px;
+  padding: 10px;
+  outline: none;
+  width: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .container {
   width: 50%;
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 
 .darker {

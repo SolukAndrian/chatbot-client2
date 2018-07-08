@@ -1,28 +1,40 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from './chat.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {MessageDTO} from '../../dto/MessageDTO';
+import {Activity} from '../../dto/Activity';
 
 @Component({
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
-  public messages: string[] = new Array();
 
-  constructor(private chatService: ChatService, private http: HttpClient) {
+export class ChatComponent implements OnInit {
+  public messages: Activity[] = new Array();
+
+  constructor(private chatService: ChatService) {
   }
 
   ngOnInit() {
   }
 
-  addMessage(value: string) {
-    this.getAnswer(value).subscribe(message => this.messages.push(message.value));
+  public addMessage(value: string): void {
+    this.addUserMessage(value);
+    this.addBotAnswer(value);
   }
 
-  getAnswer(value: string): Observable<MessageDTO> {
-    this.messages.push(value);
-    return this.chatService.getAnswer(value);
+  private addUserMessage(value: string): void {
+    this.messages.unshift(
+      new Activity(value, this.getCurrentTime(), false)
+    );
+  }
+
+  private addBotAnswer(value: string): void {
+    this.chatService.getAnswer(value).subscribe(
+      message => this.messages.unshift(new Activity(message.text, this.getCurrentTime(), true))
+    );
+  }
+
+  private getCurrentTime(): string {
+    const date = new Date();
+    return (((date.getHours() < 10) ? '0' : '') + date.getHours() + ':' + ((date.getMinutes() < 10) ? '0' : '') + date.getMinutes());
   }
 }

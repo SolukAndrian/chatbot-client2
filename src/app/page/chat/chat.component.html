@@ -1,13 +1,22 @@
 <div class="chat-page">
 
-  <div class="container" *ngFor="let message of messages">
-    <p>{{message}}</p>
+  <div class="chat-form">
+    <form class="chat-form" method="post" name="chat-form">
+      <input type="text" placeholder="Type message..." class="text-field" #inputText/>
+      <input type="submit" name="registration" (click)="addMessage(inputText.value); inputText.value = ''"/>
+    </form>
   </div>
 
-  <div class="form">
-    <form ngNativeValidate class="login-form" method="post" name="form">
-      <input type="text" placeholder="write text" #inputText/>
-      <input type="submit" value="Registration" name="registration" (click)="addMessage(inputText.value)" style="display:none;"/>
-    </form>
+  <div *ngFor="let message of messages">
+    <div *ngIf="message.isBot" class="container darker">
+      <img src="../../../assets/images/bot.png" alt="BotAvatar" class="right">
+      <p>{{message.text}}</p>
+      <span class="time-left">{{message.time}}</span>
+    </div>
+
+    <div *ngIf="!message.isBot" class="container">
+      <p>{{message.text}}</p>
+      <span class="time-right">{{message.time}}</span>
+    </div>
   </div>
 </div>

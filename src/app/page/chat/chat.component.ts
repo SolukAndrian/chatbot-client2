@@ -8,18 +8,17 @@ import {Activity} from '../../dto/Activity';
 })
 
 export class ChatComponent implements OnInit {
-  public messages: Activity[] = new Array();
+  public readonly ENTER_CODE_OLD = 10;
+  public readonly ENTER_CODE_NEW = 13;
+
   public reg = 'registration';
+  public input: string;
+  public messages: Activity[] = [];
 
   constructor(private chatService: ChatService) {
   }
 
   ngOnInit() {
-  }
-
-  public addMessage(value: string): void {
-    this.addUserMessage(value);
-    this.addBotAnswer(value);
   }
 
   private addUserMessage(value: string): void {
@@ -39,7 +38,20 @@ export class ChatComponent implements OnInit {
     return (((date.getHours() < 10) ? '0' : '') + date.getHours() + ':' + ((date.getMinutes() < 10) ? '0' : '') + date.getMinutes());
   }
 
-  public generateKey(email: string){
-    return this.chatService.generateKey(email).subscribe(res => {});
+  private addMessage(event): void {
+    // Enter pressed
+    if (!(event.ctrlKey || event.metaKey) && (event.keyCode === this.ENTER_CODE_NEW || event.keyCode === this.ENTER_CODE_OLD)) {
+      this.addUserMessage(this.input);
+      this.addBotAnswer(this.input);
+      this.input = '';
+      // Enter + Ctrl pressed
+    } else if ((event.ctrlKey || event.metaKey) && (event.keyCode === this.ENTER_CODE_NEW || event.keyCode === this.ENTER_CODE_OLD)) {
+      this.input += '\n';
+    }
+  }
+
+  public generateKey(email: string) {
+    return this.chatService.generateKey(email).subscribe(res => {
+    });
   }
 }

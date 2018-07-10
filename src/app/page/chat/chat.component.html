@@ -12,9 +12,10 @@
       <img src="../../../assets/images/bot.png" alt="BotAvatar" class="right">
       <p>{{message.text}}</p>
       <div *ngIf="message.text.includes(reg)" class="reg">
-        <!--<h4>Input your credentials: </h4>-->
-        <input type="text" placeholder="Your email..." class="text-field">
-        <br/><input type="password" placeholder="Your password..." class="text-field">
+        <form action="input" method="post">
+          <input type="text"  placeholder="Your email..." class="text-field" name="email" #inputEmail/>
+          <input type="submit" name="generateKey" (click)="generateKey(inputEmail.value); inputEmail.value = ''"/>
+        </form>
       </div>
       <span class=" time-left">{{message.time}}</span>
     </div>

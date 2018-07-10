@@ -38,4 +38,8 @@ export class ChatComponent implements OnInit {
     const date = new Date();
     return (((date.getHours() < 10) ? '0' : '') + date.getHours() + ':' + ((date.getMinutes() < 10) ? '0' : '') + date.getMinutes());
   }
+
+  public generateKey(email: string){
+    return this.chatService.generateKey(email).subscribe(res => {});
+  }
 }

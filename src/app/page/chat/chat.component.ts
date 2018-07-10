@@ -9,6 +9,7 @@ import {Activity} from '../../dto/Activity';
 
 export class ChatComponent implements OnInit {
   public messages: Activity[] = new Array();
+  public reg = 'registration';
 
   constructor(private chatService: ChatService) {
   }

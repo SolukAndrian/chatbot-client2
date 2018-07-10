@@ -11,7 +11,12 @@
     <div *ngIf="message.isBot" class="container darker">
       <img src="../../../assets/images/bot.png" alt="BotAvatar" class="right">
       <p>{{message.text}}</p>
-      <span class="time-left">{{message.time}}</span>
+      <div *ngIf="message.text.includes(reg)" class="reg">
+        <!--<h4>Input your credentials: </h4>-->
+        <input type="text" placeholder="Your email..." class="text-field">
+        <br/><input type="password" placeholder="Your password..." class="text-field">
+      </div>
+      <span class=" time-left">{{message.time}}</span>
     </div>
 
     <div *ngIf="!message.isBot" class="container">

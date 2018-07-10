@@ -1,9 +1,7 @@
 <div class="chat-page">
-
   <div class="chat-form">
-    <form class="chat-form" method="post" name="chat-form">
-      <input type="text" placeholder="Type message..." class="text-field" #inputText/>
-      <input type="submit" name="registration" (click)="addMessage(inputText.value); inputText.value = ''"/>
+    <form class="chat-form" name="chat-form">
+      <textarea autosize name="input" [(ngModel)]="input" placeholder="Type message..." class="text-field" (keyup)="addMessage($event);"></textarea>
     </form>
   </div>
 
@@ -15,7 +13,7 @@
     </div>
 
     <div *ngIf="!message.isBot" class="container">
-      <p>{{message.text}}</p>
+      <p style="white-space: pre-line;">{{message.text}}</p>
       <span class="time-right">{{message.time}}</span>
     </div>
   </div>

@@ -8,9 +8,10 @@ import {Activity} from '../../dto/Activity';
 })
 
 export class ChatComponent implements OnInit {
-  public  readonly ENTER_CODE_OLD = 10;
+  public readonly ENTER_CODE_OLD = 10;
   public readonly ENTER_CODE_NEW = 13;
 
+  public reg = 'registration';
   public input: string;
   public messages: Activity[] = [];
 
@@ -47,5 +48,10 @@ export class ChatComponent implements OnInit {
     } else if ((event.ctrlKey || event.metaKey) && (event.keyCode === this.ENTER_CODE_NEW || event.keyCode === this.ENTER_CODE_OLD)) {
       this.input += '\n';
     }
+  }
+
+  public generateKey(email: string) {
+    return this.chatService.generateKey(email).subscribe(res => {
+    });
   }
 }

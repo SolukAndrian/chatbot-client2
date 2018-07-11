@@ -17,7 +17,6 @@ export class ChatService {
   }
 
   generateKey(accountDto: string) {
-    // console.log('api/message/key?email='+accountDto.username);
     return this.chatbot.get('api/message/key?email=' + accountDto);
   }
 }

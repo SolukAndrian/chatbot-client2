@@ -12,7 +12,7 @@
       <div *ngIf="message.text.includes(reg)" class="reg">
         <form action="input" method="post">
           <input type="text"  placeholder="Your email..." class="text-field" name="email" #inputEmail/>
-          <input type="submit" name="generateKey" (click)="generateKey(inputEmail.value); inputEmail.value = ''"/>
+          <input type="submit" name="generateKey" (click)="generateKey(inputEmail.value); inputEmail.value = ''" hidden/>
         </form>
       </div>
       <span class=" time-left">{{message.time}}</span>

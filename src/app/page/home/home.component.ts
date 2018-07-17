@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
 
   }
 
+  authorization(login: string, password: string) {
+    this.homeService.authorization(login, password)
+      .subscribe((response) => {}, (error) => {});
+  }
 }

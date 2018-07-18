@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ChatbotService} from '../../services/chatbot.service';
 import {Observable} from 'rxjs';
-import {AuthenticationDTO} from '../../dto/AuthenticationDTO';
+import {catchError} from 'rxjs/operators';
+import {throwError as observableThrowError} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class HomeService {
@@ -10,7 +12,13 @@ export class HomeService {
   }
 
   authorization(login: string, password: string): Observable<Object> {
-    const authentication = new AuthenticationDTO(login, password);
-    return this.chatbot.post('api/login', authentication);
+    const body = new FormData();
+    body.append('username', login);
+    body.append('password', password);
+    return this.chatbot.post('api/login', body).pipe(catchError(this.errorHandler));
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return observableThrowError(error);
   }
 }

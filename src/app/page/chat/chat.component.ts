@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ChatService} from './chat.service';
 import {Activity} from '../../dto/Activity';
+import {HomeService} from '../home/home.service';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: './chat.component.html',
@@ -12,13 +14,19 @@ export class ChatComponent implements OnInit {
   public readonly ENTER_CODE_NEW = 13;
 
   public reg = 'registration';
-  public input: string;
+  public input = '';
   public messages: Activity[] = [];
 
-  constructor(private chatService: ChatService) {
+  constructor(private chatService: ChatService, private homeService: HomeService, private router: Router) {
   }
 
   ngOnInit() {
+    this.chatService.getUserInfo()
+      .subscribe((response) => {
+        },
+        (error) => {
+          this.router.navigate(['home']);
+        });
   }
 
   private addUserMessage(value: string): void {

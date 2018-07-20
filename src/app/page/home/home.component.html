@@ -4,7 +4,11 @@
       <form ngNativeValidate class="login-form">
         <input type="text" placeholder="username@epam.com" name="login" #login required/>
         <input type="password" placeholder="password" name="password" #password required/>
-        <input type="submit" value="Log In" name="getit" (click)="authorization(login.value, password.value)"/>
+        <label class="container">Remember me
+          <input type="checkbox" checked="checked">
+          <span class="checkuser"></span>
+        </label>
+        <input type="submit" value="Log in" name="getit" (click)="authorization(login.value, password.value)"/>
       </form>
     </div>
   </div>
@@ -13,7 +17,11 @@
       <form ngNativeValidate class="login-form">
         <input type="text" placeholder="username@epam.com" name="login" #login required/>
         <input type="password" placeholder="password" name="password" #password required/>
-        <input type="submit" value="Log In" name="getit" (click)="authorization(login.value, password.value)"/>
+        <label class="container">Remember me
+          <input type="checkbox" checked="checked">
+          <span class="checkuser"></span>
+        </label>
+        <input type="submit" value="Log in" name="getit" (click)="authorization(login.value, password.value)"/>
         <p class="message-error">{{errorMessage}}</p>
       </form>
     </div>

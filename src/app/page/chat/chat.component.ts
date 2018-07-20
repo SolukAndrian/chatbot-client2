@@ -3,6 +3,7 @@ import {ChatService} from './chat.service';
 import {Activity} from '../../dto/Activity';
 import {HomeService} from '../home/home.service';
 import {Router} from '@angular/router';
+import {ChatbotService} from '../../services/chatbot.service';
 
 @Component({
   templateUrl: './chat.component.html',
@@ -63,6 +64,15 @@ export class ChatComponent implements OnInit {
         this.input += '\n';
       }
     }
+  }
+
+  logout(): void {
+    this.chatService.logout().subscribe(
+      (response) => {
+        this.router.navigate(['home']);
+      },
+      (error) => {
+      });
   }
 
 }

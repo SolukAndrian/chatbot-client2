@@ -1,6 +1,11 @@
 <div class="chat-page">
+
+  <div class="header">
+    <button class="logout" (click)="logout()">Sign out</button>
+  </div>
+
   <div class="chat-form">
-    <form class="chat-form" name="chat-form">
+    <form name="chat-form">
       <textarea autosize name="input" [(ngModel)]="input" placeholder="Type message..."
                 class="text-field" (keyup)="addMessage($event);"></textarea>
     </form>
@@ -17,4 +22,5 @@
       <span class="time-right">{{message.time}}</span>
     </div>
   </div>
+
 </div>

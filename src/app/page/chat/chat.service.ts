@@ -24,6 +24,10 @@ export class ChatService {
     return this.chatbot.get('api/userDetails').pipe(catchError(this.errorHandler));
   }
 
+  logout() {
+    return this.chatbot.get('api/logout').pipe(catchError(this.errorHandler));
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return observableThrowError(error);
   }

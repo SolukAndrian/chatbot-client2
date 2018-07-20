@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
-// import {Observable} from 'rxjs/Observable';
 import {ChatbotService} from '../../../services/chatbot.service';
-import {Observable} from 'rxjs/internal/Observable';
+import {throwError as observableThrowError} from 'rxjs';
 
 @Injectable()
 export class HeaderService {
+
   constructor(private chatbot: ChatbotService) {
   }
 
-
-  private handleError(error: Response) {
+  private static handleError(error: Response) {
     console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
+    return observableThrowError(error.json().error || 'Server error');
   }
 }

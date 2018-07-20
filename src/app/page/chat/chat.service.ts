@@ -16,11 +16,8 @@ export class ChatService {
   getAnswer(value: string) {
     const message = new Activity(value, '', false);
     message.type = ActivityType.MESSAGE;
-    return this.http.post<Activity>(environment.SERVER_ADDRESS + 'api/messages', message);
-  }
-
-  generateKey(accountDto: string) {
-    return this.chatbot.get('api/message/key?email=' + accountDto);
+    return this.http.post<Activity>(environment.SERVER_ADDRESS + 'api/messages',
+      message, {withCredentials: true});
   }
 
   getUserInfo() {

@@ -1,24 +1,26 @@
 <div class="login-page">
+
   <div *ngIf="!isError; else error_content">
     <div class="form">
       <form ngNativeValidate class="login-form">
         <input type="text" placeholder="username@epam.com" name="login" #login required/>
         <input type="password" placeholder="password" name="password" #password required/>
         <label class="container">Remember me
-          <input type="checkbox" checked="checked">
+          <input type="checkbox">
           <span class="checkuser"></span>
         </label>
         <input type="submit" value="Log in" name="getit" (click)="authorization(login.value, password.value)"/>
       </form>
     </div>
   </div>
+
   <ng-template #error_content>
     <div class="form-error">
       <form ngNativeValidate class="login-form">
         <input type="text" placeholder="username@epam.com" name="login" #login required/>
         <input type="password" placeholder="password" name="password" #password required/>
         <label class="container">Remember me
-          <input type="checkbox" checked="checked">
+          <input type="checkbox">
           <span class="checkuser"></span>
         </label>
         <input type="submit" value="Log in" name="getit" (click)="authorization(login.value, password.value)"/>
@@ -26,4 +28,5 @@
       </form>
     </div>
   </ng-template>
+
 </div>

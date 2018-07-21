@@ -3,7 +3,6 @@ import {ChatService} from './chat.service';
 import {Activity} from '../../dto/Activity';
 import {HomeService} from '../home/home.service';
 import {Router} from '@angular/router';
-import {ChatbotService} from '../../services/chatbot.service';
 
 @Component({
   templateUrl: './chat.component.html',
@@ -15,6 +14,7 @@ export class ChatComponent implements OnInit {
 
   public input = '';
   public messages: Activity[] = [];
+  public show = false;
 
   constructor(private chatService: ChatService,
               private homeService: HomeService, private router: Router) {
@@ -27,6 +27,10 @@ export class ChatComponent implements OnInit {
         (error) => {
           this.router.navigate(['home']);
         });
+  }
+
+  toggle() {
+    this.show = !this.show;
   }
 
   private addUserMessage(value: string): void {
@@ -74,5 +78,4 @@ export class ChatComponent implements OnInit {
       (error) => {
       });
   }
-
 }

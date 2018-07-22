@@ -3,6 +3,7 @@ import {ChatService} from './chat.service';
 import {Activity} from '../../dto/Activity';
 import {HomeService} from '../home/home.service';
 import {Router} from '@angular/router';
+import {User} from '../../dto/User';
 
 @Component({
   templateUrl: './chat.component.html',
@@ -14,6 +15,7 @@ export class ChatComponent implements OnInit {
 
   public input = '';
   public messages: Activity[] = [];
+  public user: User;
   public show = false;
 
   constructor(private chatService: ChatService,
@@ -23,8 +25,10 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
     this.chatService.getUserInfo()
       .subscribe((response) => {
+          this.user = new User(response.fullName, response.email,
+            response.phone, response.position, response.department);
         },
-        (error) => {
+        () => {
           this.router.navigate(['home']);
         });
   }
@@ -70,12 +74,12 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  logout(): void {
-    this.chatService.logout().subscribe(
-      (response) => {
+  signout(): void {
+    this.chatService.signout().subscribe(
+      () => {
         this.router.navigate(['home']);
       },
-      (error) => {
+      () => {
       });
   }
 }

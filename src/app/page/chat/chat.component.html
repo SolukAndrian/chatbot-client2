@@ -4,11 +4,17 @@
     <img class="image" src="../../../assets/images/user.png" alt="UserAvatar"/>
   </button>
 
-  <div *ngIf="show" class="userInfo">
-    <p>First Name</p>
-    <p>Last Name</p>
-    <p>Email Address</p>
-    <input type="submit" value="Sign out" name="signout" (click)="logout()"/>
+  <div *ngIf="show && user" class="userInfo">
+    <p>{{user.fullName}}</p>
+    <span>Email </span>
+    <p>{{user.email}}</p>
+    <span>Phone number </span>
+    <p>{{user.phone}}</p>
+    <span>Position </span>
+    <p>{{user.position}}</p>
+    <span>Department </span>
+    <p>{{user.department}}</p>
+    <input type="submit" value="Sign out" name="signout" (click)="signout()"/>
   </div>
 
   <div class="chat-form">

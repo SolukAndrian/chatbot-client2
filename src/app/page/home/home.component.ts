@@ -10,7 +10,6 @@ export class HomeComponent implements OnInit {
 
   public isError = false;
   public errorMessage: string;
-
   constructor(private homeService: HomeService, private router: Router) {
   }
 
@@ -19,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   authorization(login: string, password: string) {
     this.homeService.authorization(login, password)
-      .subscribe((response) => {
+      .subscribe(() => {
           this.router.navigate(['chat']);
         },
         (error) => {

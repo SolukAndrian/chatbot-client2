@@ -6,6 +6,7 @@ import {Activity} from '../../dto/Activity';
 import {ActivityType} from '../../dto/ActivityType';
 import {catchError} from 'rxjs/operators';
 import {throwError as observableThrowError} from 'rxjs';
+import {User} from '../../dto/User';
 
 @Injectable()
 export class ChatService {
@@ -21,10 +22,11 @@ export class ChatService {
   }
 
   getUserInfo() {
-    return this.chatbot.get('api/userDetails').pipe(catchError(this.errorHandler));
+    return this.http.get<User>(environment.SERVER_ADDRESS + 'api/getUserInfo',
+      {withCredentials: true}).pipe(catchError(this.errorHandler));
   }
 
-  logout() {
+  signout() {
     return this.chatbot.get('api/logout').pipe(catchError(this.errorHandler));
   }
 

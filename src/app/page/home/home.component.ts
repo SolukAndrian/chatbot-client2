@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  authorization(login: string, password: string) {
-    this.homeService.authorization(login, password)
+  authorization(login: string, password: string, rememberMe: boolean) {
+    this.homeService.authorization(login, password, rememberMe)
       .subscribe(() => {
           this.router.navigate(['chat']);
         },

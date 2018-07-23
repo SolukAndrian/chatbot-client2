@@ -11,10 +11,15 @@ export class HomeService {
   constructor(private chatbot: ChatbotService) {
   }
 
-  authorization(login: string, password: string): Observable<Object> {
+  authorization(login: string, password: string, rememberMe: boolean): Observable<Object> {
+    console.log(rememberMe);
     const body = new FormData();
     body.append('username', login);
     body.append('password', password);
+    if (rememberMe) {
+      body.append('remember-me', 'on');
+    }
+
     return this.chatbot.post('api/login', body).pipe(catchError(this.errorHandler));
   }
 

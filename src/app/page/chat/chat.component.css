@@ -99,7 +99,7 @@
   width: 100%;
 }
 
-.userInfo {
+.user-info {
   font-family: "Roboto", sans-serif;
   z-index: 1;
   background: #FFFFFF;
@@ -113,7 +113,7 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.userInfo p {
+.user-info p {
   margin: 5px 8px 15px;
   text-align: center;
   padding: 6px;
@@ -122,21 +122,21 @@
   transition-duration: 0.3s;
 }
 
-.userInfo p:hover {
+.user-info p:hover {
   background-color: #e6ffe6;
 }
 
-.userInfo p:first-child {
+.user-info p:first-child {
   font-size: 19px;
 }
 
-.userInfo span {
-  margin: 0 10px ;
+.user-info span {
+  margin: 0 10px;
   text-align: left;
   font-size: 16px;
 }
 
-.userInfo input[type="submit"] {
+.user-info input[type="submit"] {
   border: 1px solid #f2f2f2;
   outline: 0;
   background: #dedede;
@@ -149,7 +149,7 @@
   transition-duration: 0.5s;
 }
 
-.userInfo input[type="submit"]:hover {
+.user-info input[type="submit"]:hover {
   cursor: pointer;
   background-color: #87CEEB;
 }

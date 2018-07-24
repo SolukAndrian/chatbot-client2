@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  signout(): void {
+  private signout(): void {
     this.chatService.signout().subscribe(
       () => {
         this.router.navigate(['home']);

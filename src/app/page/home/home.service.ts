@@ -12,7 +12,6 @@ export class HomeService {
   }
 
   authorization(login: string, password: string, rememberMe: boolean): Observable<Object> {
-    console.log(rememberMe);
     const body = new FormData();
     body.append('username', login);
     body.append('password', password);

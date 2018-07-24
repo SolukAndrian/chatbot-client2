@@ -55,19 +55,21 @@ input[type="submit"]:hover {
 
 .message-error {
   color: red;
+  margin-top: 30px;
   font-size: 15px;
   position: absolute;
-  text-align:center;
+  text-align: center;
   width: 75%;
 }
 
 .container {
+  color: #696969;
   display: block;
-  margin: 0 35px 15px;
-  position: relative;
   padding-left: 35px;
+  text-align: left;
+  position: relative;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 /* Hide the browser's default checkbox */
@@ -78,7 +80,7 @@ input[type="submit"]:hover {
 }
 
 /* Create a custom checkbox */
-.checkuser {
+.check-user {
   position: absolute;
   top: 0;
   left: 0;
@@ -88,29 +90,29 @@ input[type="submit"]:hover {
   border-radius: 3px;
 }
 
-.checkuser:after {
+.check-user:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkuser {
+.container:hover input ~ .check-user {
   background-color: #ccc;
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkuser {
+.container input:checked ~ .check-user {
   background-color: #2196F3;
 }
 
 /* Show the checkuser when checked */
-.container input:checked ~ .checkuser:after {
+.container input:checked ~ .check-user:after {
   display: block;
 }
 
 /* Style the checkuser/indicator */
-.container .checkuser:after {
+.container .check-user:after {
    left: 7px;
    top: 4px;
    width: 4px;

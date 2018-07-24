@@ -6,24 +6,45 @@ import {Router} from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
 
+export class HomeComponent implements OnInit {
+  public emailPattern = '^[\\w.+\\-]+@epam.com$';
+  public passwordPattern = '^((((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]))|' +
+    '((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[!$#%]))|' +
+    '((?=.*?[a-z])(?=.*?[0-9])(?=.*?[!$#%]))|' +
+    '((?=.*?[0-9])(?=.*?[!$#%])(?=.*?[A-Z])))' +
+    '.{9,}$)';
   public isError = false;
   public errorMessage: string;
+
   constructor(private homeService: HomeService, private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  authorization(login: string, password: string, rememberMe: boolean) {
+  private authorization(login: string, password: string, rememberMe: boolean): void {
     this.homeService.authorization(login, password, rememberMe)
       .subscribe(() => {
           this.router.navigate(['chat']);
         },
         (error) => {
           this.isError = true;
-          this.errorMessage = (error.status === 401 ? 'Incorrect login or password' : 'Server error');
+          this.errorMessage = (error.status === 401 ? 'Incorrect username or password' : 'Server error');
         });
+  }
+
+  private isValid(email: string, password: string): boolean {
+    const emailRegex = new RegExp(this.emailPattern);
+    const isEmailValid = emailRegex.test(email);
+    const passwordRegex = new RegExp(this.passwordPattern);
+    const isPasswordValid = passwordRegex.test(password);
+    return isEmailValid && isPasswordValid;
+  }
+
+  private submitted(email: string, password: string, checked: boolean): void {
+    if (this.isValid(email, password)) {
+      this.authorization(email, password, checked);
+    }
   }
 }

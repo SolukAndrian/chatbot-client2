@@ -9,11 +9,11 @@ import {Router} from '@angular/router';
 
 export class HomeComponent implements OnInit {
   public emailPattern = '^[\\w.+\\-]+@epam.com$';
-  public passwordPattern = '^((((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]))|' +
-    '((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[!$#%]))|' +
-    '((?=.*?[a-z])(?=.*?[0-9])(?=.*?[!$#%]))|' +
-    '((?=.*?[0-9])(?=.*?[!$#%])(?=.*?[A-Z])))' +
-    '.{9,}$)';
+  public passwordPattern = '^(((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]))|' +
+    '((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[#?!@$%^&*-]))|' +
+    '((?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]))|' +
+    '((?=.*?[0-9])(?=.*?[#?!@$%^&*-])(?=.*?[A-Z])))' +
+    '.{9,}$';
   public isError = false;
   public errorMessage: string;
 
@@ -21,6 +21,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.homeService.ping().subscribe(
+      () => {
+      },
+      (error) => {
+        if (error.status === 200) {
+          this.router.navigate(['chat']);
+        }
+      });
   }
 
   private authorization(login: string, password: string, rememberMe: boolean): void {

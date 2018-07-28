@@ -4,7 +4,6 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ChatService} from './chat.service';
 import {ChatComponent} from './chat.component';
-import {Autosize} from 'ngx-autosize';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import {Autosize} from 'ngx-autosize';
   ],
   exports: [],
   declarations: [
-    Autosize,
     ChatComponent
   ],
   providers: [

@@ -7,7 +7,6 @@ import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {ChatbotService} from './services/chatbot.service';
 import {ChatModule} from './page/chat/chat.module';
-import {Autosize} from 'ngx-autosize';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,6 @@ import {Autosize} from 'ngx-autosize';
     BrowserModule,
     HomeModule,
     ChatModule,
-    Autosize,
     RouterModule.forRoot([
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'}

@@ -38,7 +38,7 @@ export class ChatComponent implements OnInit {
     return (((date.getHours() < 10) ? '0' : '') + date.getHours() + ':' + ((date.getMinutes() < 10) ? '0' : '') + date.getMinutes());
   }
 
-  private addMessage(event): void {
+  public addMessage(event): void {
     // Enter pressed
     if (!(event.ctrlKey || event.metaKey) && (event.keyCode === this.ENTER_CODE_NEW || event.keyCode === this.ENTER_CODE_OLD)) {
       this.addUserMessage(this.input);

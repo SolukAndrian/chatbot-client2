@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {throwError as observableThrowError} from 'rxjs';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../environments/environment.prod';
 
 @Injectable()
 export class HomeService {
@@ -24,7 +24,7 @@ export class HomeService {
   }
 
   ping() {
-    return this.http.get(environment.SERVER_ADDRESS + 'api/ping', {withCredentials: true})
+    return this.http.get(environment + 'api/ping', {withCredentials: true})
       .pipe(catchError(this.errorHandler));
   }
 

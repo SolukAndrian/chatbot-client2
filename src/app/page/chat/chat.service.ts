@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../environments/environment.prod';
 import {ChatbotService} from '../../services/chatbot.service';
 import {Activity} from '../../dto/Activity';
 import {ActivityType} from '../../dto/ActivityType';

@@ -56,7 +56,7 @@ export class ChatComponent implements OnInit {
       + ((date.getMinutes() < 10) ? '0' : '') + date.getMinutes());
   }
 
-  private addMessage(event): void {
+  public addMessage(event): void {
     if (this.input === '\n') {
       this.input = '';
     } else {

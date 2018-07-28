@@ -24,7 +24,7 @@ export class HomeService {
   }
 
   ping() {
-    return this.http.get(environment + 'api/ping', {withCredentials: true})
+    return this.http.get(environment.SERVER_ADDRESS + 'api/ping', {withCredentials: true})
       .pipe(catchError(this.errorHandler));
   }
 

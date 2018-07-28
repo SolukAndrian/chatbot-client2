@@ -4,19 +4,19 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {ChatService} from './chat.service';
 import {ChatComponent} from './chat.component';
-import {AutosizeModule} from 'ngx-autosize';
+import {Autosize} from 'ngx-autosize';
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
-    AutosizeModule,
     RouterModule.forChild([
       {path: 'chat', component: ChatComponent}
     ])
   ],
   exports: [],
   declarations: [
+    Autosize,
     ChatComponent
   ],
   providers: [

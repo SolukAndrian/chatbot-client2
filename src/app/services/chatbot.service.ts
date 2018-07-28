@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
-import {Link} from '../dto/link';
-import {HttpClient, HttpRequest} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class ChatbotService {
@@ -27,19 +26,5 @@ export class ChatbotService {
 
   deleteByLongLink(url: string) {
     return this.http.delete(url, {withCredentials: true});
-  }
-
-  public getShortLink(link: Link) {
-    let url: string = link.href;
-    url = url.replace(environment.SERVER_ADDRESS, '');
-    url = btoa(url);
-    url = encodeURI(url);
-    return url;
-  }
-
-  public decodeLink(url: string) {
-    url = decodeURI(url);
-    url = atob(url);
-    return url;
   }
 }

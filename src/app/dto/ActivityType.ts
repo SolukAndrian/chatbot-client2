@@ -1,3 +1,4 @@
 export enum ActivityType {
-  MESSAGE = 'MESSAGE'
+  MESSAGE = 'MESSAGE',
+  LINK = 'LINK'
 }

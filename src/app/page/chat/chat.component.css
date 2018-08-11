@@ -64,6 +64,10 @@
   top: 2px;
 }
 
+.darker a {
+  color: #fff;
+}
+
 .time-right {
   float: right;
   margin-right: 10px;

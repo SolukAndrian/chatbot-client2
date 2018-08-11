@@ -4,6 +4,7 @@ import {Activity} from '../../dto/Activity';
 import {HomeService} from '../home/home.service';
 import {Router} from '@angular/router';
 import {User} from '../../dto/User';
+import {ActivityType} from '../../dto/ActivityType';
 
 @Component({
   templateUrl: './chat.component.html',
@@ -23,6 +24,8 @@ export class ChatComponent implements OnInit {
   public user: User;
   // for showing/hiding user info
   public show = false;
+  // for checking if bot mresponse contains link
+  public spliterator = 'https://';
 
   constructor(private chatService: ChatService,
               private homeService: HomeService, private router: Router) {
@@ -49,7 +52,7 @@ export class ChatComponent implements OnInit {
   // adds a new message from the user to messages array of Activity type
   private addUserMessage(value: string): void {
     this.messages.unshift(
-      new Activity(value, this.getCurrentTime(), false)
+      new Activity(value, this.getCurrentTime(), false, ActivityType.MESSAGE)
     );
   }
 
@@ -57,9 +60,18 @@ export class ChatComponent implements OnInit {
   private addBotAnswer(value: string): void {
     // calls server for bot response
     this.chatService.getAnswer(value).subscribe(
-      message => this.messages
-        .unshift(new Activity(message.text, this.getCurrentTime(), true))
-    );
+      message => {
+        if (message.text.includes(this.spliterator)) {
+          // if bot response contains a link
+          const linkText = message.text.substring(0, message.text.indexOf(this.spliterator));
+          const activity = new Activity(linkText, this.getCurrentTime(), true, ActivityType.LINK);
+          activity.link =  message.text.substring(message.text.indexOf(this.spliterator));
+          this.messages.unshift(activity);
+        } else {
+          // if bot response doesn't contains a link
+          this.messages.unshift(new Activity(message.text, this.getCurrentTime(), true, ActivityType.MESSAGE));
+        }
+      });
   }
 
   // returns current time in custom representation

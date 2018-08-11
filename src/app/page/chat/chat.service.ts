@@ -16,8 +16,7 @@ export class ChatService {
 
   // sends user message and returns bot response from the server
   getAnswer(value: string) {
-    const message = new Activity(value, '', false);
-    message.type = ActivityType.MESSAGE;
+    const message = new Activity(value, '', false, ActivityType.MESSAGE);
     return this.http.post<Activity>(environment.SERVER_ADDRESS + 'api/messages',
       message, {withCredentials: true});
   }

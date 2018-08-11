@@ -14,6 +14,7 @@ export class ChatService {
   constructor(private chatbot: ChatbotService, private http: HttpClient) {
   }
 
+  // sends user message and returns bot response from the server
   getAnswer(value: string) {
     const message = new Activity(value, '', false);
     message.type = ActivityType.MESSAGE;
@@ -21,15 +22,18 @@ export class ChatService {
       message, {withCredentials: true});
   }
 
+  // returns user info from the server
   getUserInfo() {
     return this.http.get<User>(environment.SERVER_ADDRESS + 'api/getUserInfo',
       {withCredentials: true}).pipe(catchError(this.errorHandler));
   }
 
-  signout() {
+  // calls server for interrupting session
+  signOut() {
     return this.chatbot.get('api/logout').pipe(catchError(this.errorHandler));
   }
 
+  // error handler
   errorHandler(error: HttpErrorResponse) {
     return observableThrowError(error);
   }

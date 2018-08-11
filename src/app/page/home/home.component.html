@@ -1,29 +1,17 @@
 <div class="login-page">
-  <div *ngIf="!isError; else error_content">
-    <div class="form">
-      <form ngNativeValidate class="login-form">
-        <input type="text" placeholder="username@epam.com" name="login" pattern="{{emailPattern}}" required #login />
-        <input type="password" placeholder="password" name="password" pattern="{{passwordPattern}}" required #password/>
-        <input type="submit" value="Sign in" name="signin" (click)="submitted(login.value, password.value, rememberMe.checked)"/>
-        <label class="container">Remember me
-          <input type="checkbox" #rememberMe checked>
-          <span class="check-user"></span>
-        </label>
-      </form>
-    </div>
+  <div [ngClass]="isError ? 'form-error' : 'form'">
+    <form ngNativeValidate class=" login-form">
+      <input type="text" placeholder="username@epam.com"
+             name="login" pattern="{{emailPattern}}" required #login/>
+      <input type="password" placeholder="password"
+             name="password" pattern="{{passwordPattern}}" required #password/>
+      <label class="container">Remember me
+        <input type="checkbox" #rememberMe checked>
+        <span class="check-user"></span>
+      </label>
+      <input type="submit" value="Sign in" name="signin"
+             (click)="submitted(login.value, password.value, rememberMe.checked)"/>
+      <p *ngIf="isError" class="message-error">{{errorMessage}}</p>
+    </form>
   </div>
-  <ng-template #error_content>
-    <div class="form-error">
-      <form ngNativeValidate class="login-form">
-        <input type="text" placeholder="username@epam.com" name="login" pattern="{{emailPattern}}" required #login />
-        <input type="password" placeholder="password" name="password" pattern="{{passwordPattern}}" required #password/>
-        <input type="submit" value="Sign in" name="signin" (click)="submitted(login.value, password.value, rememberMe.checked)"/>
-        <p class="message-error">{{errorMessage}}</p>
-        <label class="container">Remember me
-          <input type="checkbox" #rememberMe checked>
-          <span class="check-user"></span>
-        </label>
-      </form>
-    </div>
-  </ng-template>
 </div>

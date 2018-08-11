@@ -14,13 +14,13 @@
     <p>{{user.position}}</p>
     <span>Department </span>
     <p>{{user.department}}</p>
-    <input type="submit" value="Sign out" name="signout" (click)="signout()"/>
+    <input type="submit" value="Sign out" name="signOut" (click)="signOut()"/>
   </div>
 
   <div class="chat-form">
     <form name="chat-form">
       <textarea autosize name="input" [(ngModel)]="input" placeholder="Type message..."
-                class="text-field" (keyup)="addMessage($event);"></textarea>
+                class="text-field" (keyup)="addMessages($event);"></textarea>
     </form>
   </div>
 

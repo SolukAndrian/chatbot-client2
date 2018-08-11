@@ -12,6 +12,7 @@ export class HomeService {
   constructor(private chatbot: ChatbotService, private http: HttpClient) {
   }
 
+  // sends user data to the server in order to authorize
   authorization(login: string, password: string, rememberMe: boolean): Observable<Object> {
     const body = new FormData();
     body.append('username', login);
@@ -23,11 +24,13 @@ export class HomeService {
     return this.chatbot.post('api/login', body).pipe(catchError(this.errorHandler));
   }
 
+  // ping server for checking connection
   ping() {
     return this.http.get(environment.SERVER_ADDRESS + 'api/ping', {withCredentials: true})
       .pipe(catchError(this.errorHandler));
   }
 
+  // error handler
   errorHandler(error: HttpErrorResponse) {
     return observableThrowError(error);
   }

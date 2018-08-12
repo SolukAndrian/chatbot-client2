@@ -1,0 +1,16 @@
+<button (click)="toggle()" id="bt" class="user">
+  <img class="image" src="../../../assets/images/user.png" alt="UserAvatar"/>
+</button>
+
+<div *ngIf="show && user" class="user-info">
+  <p>{{user.fullName}}</p>
+  <span>Email </span>
+  <p>{{user.email}}</p>
+  <span>Phone number </span>
+  <p>{{user.phone}}</p>
+  <span>Position </span>
+  <p>{{user.position}}</p>
+  <span>Department </span>
+  <p>{{user.department}}</p>
+  <input type="submit" value="Sign out" name="signOut" (click)="signOut()"/>
+</div>

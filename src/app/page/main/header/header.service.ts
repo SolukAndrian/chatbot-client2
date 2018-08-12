@@ -8,6 +8,9 @@ export class HeaderService {
   constructor() {
   }
 
+  /**
+   *  Handles errors
+   */
   static errorHandler(error: HttpErrorResponse) {
     return observableThrowError(error);
   }

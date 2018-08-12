@@ -57,7 +57,7 @@ input[type="submit"]:hover {
   color: red;
   font-size: 15px;
   position: absolute;
-  text-align:center;
+  text-align: center;
   width: 75%;
 }
 
